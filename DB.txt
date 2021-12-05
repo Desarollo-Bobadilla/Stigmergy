@@ -1,0 +1,8 @@
+
+USER: tanjiro
+PASSWORD: hashira
+
+# .. Marketplace: marketplace_db
+# .. Usuarios: usuarios_db
+# .. Pedidos: pedidos_db
+# .. Hubs: hubs_db

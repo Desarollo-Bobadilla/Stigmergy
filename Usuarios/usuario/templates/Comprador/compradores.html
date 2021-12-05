@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content">
+    <div class="">
+        <div class="page-header-title">
+            <br>
+            <h4 class="page-title">Algunos Compradores</h4>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="page-content-wrapper">
+        <div class="container">
+            <!-- Content page -->
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr style="color:#5a8612">
+                            <th>ID</th>
+                            <th font color="red">Nombre</th>
+                            <th>Preferencias</th>
+                            <th>Dirección</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for comp in compradores_list %}
+                        <tr>
+                            <td>{{ comp.id }}</td>
+                            <td>{{ comp.nombre }}</td>
+                            <td>{{ comp.preferencias }}</td>
+                            <td>{{ comp.direccion }}</td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                    <div style="text-align:center;">
+                        <button type="button" class="btn btn-primary waves-effect waves-light"
+                                onClick=" window.location.href='/' ">
+                            Back
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
