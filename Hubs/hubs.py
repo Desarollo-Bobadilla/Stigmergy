@@ -1,6 +1,7 @@
 
 # -- Libraries
 
+import logging
 from flask import Flask, render_template, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, FloatField
@@ -144,7 +145,7 @@ def hub_delete(id):
         return render_template(list_hub, our_hubs = our_hubs)
 
     except BaseException as e:
-        # clean-up
+        logging.exception('error while deleting')
         raise e
 
 @app.route('/dron/delete/<int:id>')
@@ -159,5 +160,5 @@ def dron_delete(id):
         return render_template(list_dron, our_drons = our_drons)
 
     except BaseException as e:
-        # clean-up
+        logging.exception('error while deleting')
         raise e
