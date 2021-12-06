@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .logic.logic_pedido import *
+from .logic.logic_pedido import get_ordenes, get_orden_pk, create_orden, delete_orden_pk, change_value_orden_pk
 from .forms import PedidoForm
 
 from django.http import HttpResponse

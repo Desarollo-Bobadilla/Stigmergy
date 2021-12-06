@@ -143,10 +143,9 @@ def hub_delete(id):
         our_hubs = Hub.query.order_by(Hub.id)
         return render_template(list_hub, our_hubs = our_hubs)
 
-    except:
-        flash('Error')
-        our_hubs = Hub.query.order_by(Hub.id)
-        return render_template(list_hub, our_hubs = our_hubs)
+    except BaseException as e:
+        # clean-up
+        raise e
 
 @app.route('/dron/delete/<int:id>')
 def dron_delete(id):
@@ -159,7 +158,6 @@ def dron_delete(id):
         our_drons = Dron.query.order_by(Dron.id)
         return render_template(list_dron, our_drons = our_drons)
 
-    except:
-        flash('Error')
-        our_drons = Hub.query.order_by(Hub.id)
-        return render_template(list_dron, our_drons = our_drons)
+    except BaseException as e:
+        # clean-up
+        raise e

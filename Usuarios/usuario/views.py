@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .logic.logic_comprador import *
-from .logic.logic_empleado import *
+from .logic.logic_comprador import get_all_compradores, get_comprador_pk, create_comprador, delete_comprador_pk
+from .logic.logic_empleado import get_all_empleados, get_empleado_pk, create_empleado, delete_empleado_pk
 
 from .form_comprador import CompradorForm
 from .form_empleado import EmpleadoForm
@@ -14,13 +14,13 @@ from django.urls import reverse
 
 # -----
 
-def get_all_Compradores(request):
+def get_all_compradores(request):
 
     if request.method == 'GET':
         context = {'compradores_list': get_all_compradores()}
         return render(request, 'Comprador/compradores.html', context)
 
-def get_all_Empleados(request):
+def get_all_empleados(request):
 
     if request.method == 'GET':
         context = {'empleados_list': get_all_empleados()}
@@ -28,13 +28,13 @@ def get_all_Empleados(request):
 
 # -----
 
-def get_Comprador(request, pk):
+def get_comprador(request, pk):
 
     if request.method == 'GET':
         comprador = serializers.serialize('json', [get_comprador_pk(pk)])
         return HttpResponse(comprador, content_type = 'application/json')
 
-def get_Empleado(request, pk):
+def get_empleado(request, pk):
 
     if request.method == 'GET':
         empleado = serializers.serialize('json', [get_empleado_pk(pk)])
@@ -42,14 +42,14 @@ def get_Empleado(request, pk):
 
 # -----
 
-def delete_Comprador(request, pk):
+def delete_comprador(request, pk):
 
     if request.method in ['GET', 'DELETE']:
         delete_comprador_pk(pk)
         context = {'compradores_list': get_all_compradores()}
         return render(request, 'Comprador/compradores.html', context)
 
-def delete_Empleado(request, pk):
+def delete_empleado(request, pk):
 
     if request.method in ['GET', 'DELETE']:
         delete_empleado_pk(pk)
@@ -58,7 +58,7 @@ def delete_Empleado(request, pk):
 
 # -----
 
-def create_Coprador(request):
+def create_coprador(request):
 
     if request.method == 'POST':
 
@@ -78,7 +78,7 @@ def create_Coprador(request):
     context = {'form': form,}
     return render(request, 'Comprador/compradorCreate.html', context)
 
-def create_Empleado(request):
+def create_empleado(request):
 
     if request.method == 'POST':
 
