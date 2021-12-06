@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Crear Hub</h1>
+<h1>Crear Dron</h1>
 
 {% for message in get_flashed_messages() %}
 
@@ -25,18 +25,28 @@
 
         <br>
 
-        {{ form.localizacion.label(class="form-label")}}
-        {{ form.localizacion(class="form-control")}}
+        {{ form.altoMax.label(class="form-label")}}
+        {{ form.altoMax(class="form-control")}}
 
         <br>
 
-        {{ form.lat.label(class="form-label")}}
-        {{ form.lat(class="form-control")}}
+        {{ form.anchoMax.label(class="form-label")}}
+        {{ form.anchoMax(class="form-control")}}
 
         <br>
 
-        {{ form.log.label(class="form-label")}}
-        {{ form.log(class="form-control")}}
+        {{ form.largoMax.label(class="form-label")}}
+        {{ form.largoMax(class="form-control")}}
+
+        <br>
+        
+        {{ form.pesoMax.label(class="form-label")}}
+        {{ form.pesoMax(class="form-control")}}
+
+        <br>
+                
+        {{ form.id_hub.label(class="form-label")}}
+        {{ form.id_hub(class="form-control")}}
 
         <br>
 
