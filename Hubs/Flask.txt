@@ -1,0 +1,5 @@
+FLASK
+
+export FLASK_ENV=development
+export FLASK_APP=hubs.py
+flask run
