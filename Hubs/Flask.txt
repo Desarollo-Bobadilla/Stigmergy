@@ -1,5 +1,15 @@
 FLASK
 
+# -- CONSOLA GIT BASH
+
 export FLASK_ENV=development
 export FLASK_APP=hubs.py
 flask run
+
+winpty python
+from hubs import db
+db.create_all()
+
+flask db init
+flask db migrate -m "IM"
+flask db upgrade

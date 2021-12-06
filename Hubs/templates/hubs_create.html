@@ -42,4 +42,14 @@
 
     </form>
 
+    <br>
+    <br>
+
+    {% for our_hub in our_hubs %}
+
+        {{our_hub.id}} // {{our_hub.localizacion}}
+
+    {% endfor %}
+
+
 {% endblock %}
