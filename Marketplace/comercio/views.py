@@ -19,12 +19,12 @@ def comercio(request):
         result = []
         data = place.find({})
         for dto in data:
-            jsonData = {
+            json_data = {
                 "id": str(dto['_id']),
                 "nombre": dto['nombre'],
                 'sede': dto['sede'],
             }
-            result.append(jsonData)
+            result.append(json_data)
         client.close()
         return JsonResponse(result, safe=False)
     if request.method == "POST":
@@ -42,7 +42,7 @@ def comercio(request):
 # --------------------------------------------------
 
 @api_view(["GET", "POST", "DELETE"])
-def placeDetail(request, pk):
+def comercio_detail(request, pk):
     client = MongoClient(settings.MONGO_CLI)
     db = client.monitoring_db
     place = db['comercio']
@@ -50,27 +50,27 @@ def placeDetail(request, pk):
         result = []
         data = place.find({'_id': ObjectId(pk)})
         for dto in data:
-            jsonData = {
+            json_data = {
                 "id": str(dto['_id']),
                 "nombre": dto['nombre'],
                 'sede': dto['sede'],
             }
-            result.append(jsonData)
+            result.append(json_data)
         client.close()
         return JsonResponse(result[0], safe=False)
     if request.method == "POST":
         data = JSONParser().parse(request)
 
-        jsonData = {
+        json_data = {
             'ubicacion': data["ubicacion"],
             'puntos': data["puntos"],
         }
 
-        placePost = place.find({'_id': ObjectId(pk)})
-        for dto in placePost:
+        place_post = place.find({'_id': ObjectId(pk)})
+        for dto in place_post:
             for d in dto["sede"]:
                 if d["sede"] == data["sede"]:
-                    d["sede"].append(jsonData)
+                    d["sede"].append(json_data)
                     result = place.update(
                         {'_id': ObjectId(pk)},
                         {'$set': {'comercio': dto["comercio"]}}
@@ -82,15 +82,15 @@ def placeDetail(request, pk):
                     client.close()
                     return JsonResponse(respo, safe=False)
 
-        jsonDataNew = {
+        json_data_new = {
             'sede': data["sede"],
             'values': [
-                jsonData
+                json_data
             ]
         }
         result = place.update(
         {'_id': ObjectId(pk)},
-        {'$push': {'measurements': jsonDataNew}}
+        {'$push': {'measurements': json_data_new}}
         )
         respo = {
             "MongoObjectID": str(result),
@@ -114,11 +114,10 @@ def placeDetail(request, pk):
 def average(request, pk):
     client = MongoClient(settings.MONGO_CLI)
     db = client.monitoring_db
-    dataReceived = JSONParser().parse(request)
     place = db['comercio']
     data = place.find({'_id': ObjectId(pk)})
     result = []
-    variableName = ""
+    variable_name = ""
 
     # Calculo de promedio
     average = 0
@@ -128,11 +127,11 @@ def average(request, pk):
 
     average /= len(data)
 
-    jsonData = {
+    json_data = {
         "place": place,
-        "variable": variableName,
+        "variable": variable_name,
         "average": average
     }
-    result.append(jsonData)
+    result.append(json_data)
     client.close()
     return JsonResponse(result[0], safe=False)
