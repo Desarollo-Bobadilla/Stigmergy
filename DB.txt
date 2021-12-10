@@ -8,8 +8,13 @@ PASSWORD: hashira_rengoku
 # db = client.test
 # --------
 
-
-
 # .. Usuarios: usuarios-db // usuarios_db
 # .. Pedidos: pedidos-db
 # .. Hubs: hubs-db
+
+Kong ID:
+
+Usuarios: "4d1af644-90bc-4602-baaa-9394a64ee2de"
+Pedidos: "d887f0e5-9897-471d-b16a-90824544733c"
+Hubs: "8660efa6-dd67-4293-a0f0-a01213f60d39"
+Marketplace: 
