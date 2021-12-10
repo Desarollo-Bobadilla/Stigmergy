@@ -1,8 +1,15 @@
 
 USER: tanjiro
-PASSWORD: hashira
+PASSWORD: hashira_rengoku
 
-# .. Marketplace: marketplace_db
-# .. Usuarios: usuarios_db
-# .. Pedidos: pedidos_db
-# .. Hubs: hubs_db
+# .. Marketplace: marketplace-db
+# -- MONGO
+# client = pymongo.MongoClient("mongodb+srv://tanjiro:hashira_rengoku@cluster0.9axzz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+# db = client.test
+# --------
+
+
+
+# .. Usuarios: usuarios-db // usuarios_db
+# .. Pedidos: pedidos-db
+# .. Hubs: hubs-db
