@@ -14,13 +14,13 @@ from django.urls import reverse
 
 # -----
 
-def get_all_compradores(request):
+def get_all_compradores_v(request):
 
     if request.method == 'GET':
         context = {'compradores_list': get_all_compradores()}
         return render(request, 'Comprador/compradores.html', context)
 
-def get_all_empleados(request):
+def get_all_empleados_v(request):
 
     if request.method == 'GET':
         context = {'empleados_list': get_all_empleados()}
@@ -28,13 +28,13 @@ def get_all_empleados(request):
 
 # -----
 
-def get_comprador(request, pk):
+def get_comprador_v(request, pk):
 
     if request.method == 'GET':
         comprador = serializers.serialize('json', [get_comprador_pk(pk)])
         return HttpResponse(comprador, content_type = 'application/json')
 
-def get_empleado(request, pk):
+def get_empleado_v(request, pk):
 
     if request.method == 'GET':
         empleado = serializers.serialize('json', [get_empleado_pk(pk)])
@@ -42,14 +42,14 @@ def get_empleado(request, pk):
 
 # -----
 
-def delete_comprador(request, pk):
+def delete_comprador_v(request, pk):
 
     if request.method in ['GET', 'DELETE']:
         delete_comprador_pk(pk)
         context = {'compradores_list': get_all_compradores()}
         return render(request, 'Comprador/compradores.html', context)
 
-def delete_empleado(request, pk):
+def delete_empleado_v(request, pk):
 
     if request.method in ['GET', 'DELETE']:
         delete_empleado_pk(pk)
@@ -58,7 +58,7 @@ def delete_empleado(request, pk):
 
 # -----
 
-def create_coprador(request):
+def create_coprador_v(request):
 
     if request.method == 'POST':
 
@@ -67,7 +67,7 @@ def create_coprador(request):
         if form.is_valid():
             create_comprador(form)
             messages.add_message(request, messages.SUCCESS, 'Comprador create successful')
-            return HttpResponseRedirect(reverse('create_Coprador'))
+            return HttpResponseRedirect(reverse('create_coprador_v'))
 
         else:
             print('\n', form.errors, '\n')
@@ -78,7 +78,7 @@ def create_coprador(request):
     context = {'form': form,}
     return render(request, 'Comprador/compradorCreate.html', context)
 
-def create_empleado(request):
+def create_empleado_v(request):
 
     if request.method == 'POST':
 
@@ -87,7 +87,7 @@ def create_empleado(request):
         if form.is_valid():
             create_empleado(form)
             messages.add_message(request, messages.SUCCESS, 'Empleado create successful')
-            return HttpResponseRedirect(reverse('create_Empleado'))
+            return HttpResponseRedirect(reverse('create_empleado_v'))
 
         else:
             print('\n', form.errors, '\n')

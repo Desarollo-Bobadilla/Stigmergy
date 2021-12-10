@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 # -- App Configuration
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://tanjiro:hashira@localhost:5432/hubs_db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://tanjiro:hashira_rengoku@hubs-db.c8uzrj5iwkry.us-east-1.rds.amazonaws.com:5432/hubs-db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "Bobs"
 

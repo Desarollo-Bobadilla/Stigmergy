@@ -79,9 +79,9 @@ DATABASES = {
         			"ENGINE": "django.db.backends.postgresql_psycopg2",
         			"NAME": 'pedidos_db',
         			"USER": 'tanjiro',
-        			"PASSWORD": 'hashira',
-        			"HOST": "localhost",
-        			"PORT": "",
+        			"PASSWORD": 'hashira_rengoku',
+        			"HOST": "pedidos-db.c8uzrj5iwkry.us-east-1.rds.amazonaws.com",
+        			"PORT": "5432",
     			}
 		}
 
